@@ -70,7 +70,7 @@ public class TestLoginForm extends Fixture{
 
         loginPage.clickLoginInButton();
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
         mainPage.clickLogoutButton();
     }
 

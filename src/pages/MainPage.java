@@ -22,14 +22,6 @@ public class MainPage {
         web.clickButton("ButtonLogin");
     }
 
-    /*
-     * Enter to customer menu and click Customer data
-     */
-    public void clickLogoutButton() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {
-        web.clickButton("ButtonCustomerMenu");
-        web.clickLink("ButtonLogout");
-    }
-
 
     /*
      * Locate request menu and choice of action
@@ -72,6 +64,23 @@ public class MainPage {
 
     public void clickButtonSaveChanges() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
         web.clickButton("ButtonSaveChanges");
+    }
+
+    public void clickRadioButtonMale() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickElement("RadioButtonMale");
+    }
+
+    public void clickRadioButtonFeMale() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickElement("RadioButtonFemale");
+    }
+
+
+    /*
+     * Enter to customer menu and click Customer data
+     */
+    public void clickLogoutButton() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {
+        web.clickButton("ButtonCustomerMenu");
+        web.clickLink("ButtonLogout");
     }
 
 

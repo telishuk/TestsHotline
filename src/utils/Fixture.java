@@ -30,7 +30,7 @@ public class Fixture {
     public static void tearDown() throws Exception {
         log.info("<--------- Finished tests --------->");
         log.info("<--------- Close browser --------->");
-        //driver.quit();
+        driver.quit();
     }
 
 }
