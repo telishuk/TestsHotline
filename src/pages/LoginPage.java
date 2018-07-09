@@ -16,7 +16,7 @@ public class LoginPage {
         web = new WebElementActions(driver);
     }
 
-    public void clickLoginInButton() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {
+    public void clickLoginButton() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {
         web.clickButton("ButtonLoginIn");
     }
 
@@ -62,8 +62,14 @@ public class LoginPage {
         web.inputAndClickEnter("LoginEmailField", email);
     }
 
+
+
+    /*
+     * Errors messages
+     */
+
     public void displayedMassageErrors() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {
-        System.out.println(web.isElementPresent("LoginErrorsMassages"));
+        System.out.println(web.isElementPresent("LoginErrorsMessages"));
     }
 
     public boolean checkEmptyPasswordError() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {

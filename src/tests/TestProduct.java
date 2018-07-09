@@ -26,9 +26,9 @@ public class TestProduct extends Fixture {
         loginPage.clearAllField();
         loginPage.fillLoginForm("telishuk@mail.ru", "gfhjkm100");
 
-        loginPage.clickLoginInButton();
+        loginPage.clickLoginButton();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        mainPage.clickUserDataForm();
+        mainPage.clickCustomerDataForm();
         driver.findElement(By.xpath(".//div[@class = 'cell-6 cell-sm']/label[1]")).click();
 
     }

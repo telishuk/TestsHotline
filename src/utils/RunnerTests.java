@@ -1,27 +1,28 @@
 package utils;
 
-import org.apache.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import tests.TestLoginForm;
 import tests.TestMainForm;
 import tests.TestRegistrationForm;
 
 import java.util.concurrent.TimeUnit;
 
-public class Fixture{
-    protected static WebDriver driver;
-    protected String mainUrl = "https://hotline.ua/";
-    protected String registerUrl = "https://hotline.ua/register/";
-    protected static WebElementActions web;
-    protected RandomData randomData = new RandomData();
-    protected static final Logger log = Logger.getLogger(Fixture.class);
 
-    /*
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+        TestMainForm.class,
+        TestLoginForm.class,
+        TestRegistrationForm.class
+})
+public class RunnerTests extends Fixture{
+
     @BeforeClass
     public static void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "C:/Selenium/chromedriver.exe");
@@ -38,6 +39,8 @@ public class Fixture{
         log.info("<--------- Close browser --------->");
         driver.quit();
     }
-    */
+
+
 
 }
+

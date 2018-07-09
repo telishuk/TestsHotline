@@ -1,6 +1,7 @@
 package tests;
 
 import org.junit.*;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.*;
 import pages.LoginPage;
 import pages.MainPage;
@@ -9,10 +10,12 @@ import utils.NoSuchLocatorException;
 
 import java.util.concurrent.TimeUnit;
 
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+
 public class TestLoginForm extends Fixture{
 
     @Test
-    public void returnToMainPage() throws Exception, NoSuchLocatorException {
+    public void switchToMainPage() throws Exception, NoSuchLocatorException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
         mainPage.clickLoginButton();
@@ -20,19 +23,19 @@ public class TestLoginForm extends Fixture{
     }
 
     @Test
-    public void showLoginForm() throws Exception, NoSuchLocatorException {
+    public void loginFormEmpty() throws Exception, NoSuchLocatorException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
         mainPage.clickLoginButton();
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickLoginInButton();
-        System.out.println(web.isElementPresent("LoginErrorsMassages"));
+        loginPage.clickLoginButton();
+        System.out.println(web.isElementPresent("LoginErrorsMessages"));
         //loginPage.displayedMassageErrors();
     }
 
     @Test
-    public void fillUserLogin() throws Exception, NoSuchLocatorException {
+    public void fillCustomerLogin() throws Exception, NoSuchLocatorException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
         mainPage.clickLoginButton();
@@ -44,7 +47,7 @@ public class TestLoginForm extends Fixture{
     }
 
     @Test
-    public void fillUserPassword() throws Exception, NoSuchLocatorException {
+    public void fillCustomerPassword() throws Exception, NoSuchLocatorException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
         mainPage.clickLoginButton();
@@ -52,14 +55,18 @@ public class TestLoginForm extends Fixture{
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clearPasswordField();
         loginPage.fillPasswordField(randomData.getRandomString());
-        loginPage.clickLoginInButton();
+        loginPage.clickLoginButton();
 
         //loginPage.displayedMassageErrors();
         System.out.println(web.isElementPresent("EmptyFieldError"));
     }
 
+
+    /*
+     * Test login Customer and don't logout with @BeforeClass used
+     */
     @Test
-    public void fillUserData() throws Exception, NoSuchLocatorException {
+    public void loginCustomer() throws Exception, NoSuchLocatorException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
         mainPage.clickLoginButton();
@@ -67,11 +74,26 @@ public class TestLoginForm extends Fixture{
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clearAllField();
         loginPage.fillLoginForm("telishuk@mail.ru", "gfhjkm100");
+        loginPage.clickLoginButton();
 
-        loginPage.clickLoginInButton();
+        //System.out.println(web.isElementPresent("ButtonLogin"));
+        //Assert.assertFalse("", web.isElementPresent("ButtonLogin"));
 
-        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+    }
+
+
+    /*
+     * If browser don't close and Customer is logged in
+     * Else you must open page and login Customer, then only logout
+     */
+    @Test
+    public void logoutCustomer() throws Exception, NoSuchLocatorException {
+        web.openPage(mainUrl);
+        MainPage mainPage = new MainPage(driver);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         mainPage.clickLogoutButton();
+        //System.out.println(web.isElementPresent("ButtonLogout"));
+
     }
 
     @Test
@@ -95,6 +117,7 @@ public class TestLoginForm extends Fixture{
     }
 
     @Test
+    //@Ignore
     public void testTermOfUseLink() throws Exception, NoSuchLocatorException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
@@ -103,7 +126,7 @@ public class TestLoginForm extends Fixture{
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickTermOfUseLink();
 
-        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "w");
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "W");
         driver.switchTo().defaultContent();
     }
 

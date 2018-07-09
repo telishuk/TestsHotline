@@ -1,13 +1,17 @@
 package tests;
 
 import org.apache.log4j.Logger;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import pages.RegistrationPage;
 import utils.Fixture;
 import utils.NoSuchLocatorException;
 import utils.RandomData;
 
 import java.io.IOException;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class TestRegistrationForm extends Fixture{
 

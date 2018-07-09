@@ -1,7 +1,10 @@
 package tests;
 
 import org.apache.log4j.Logger;
+import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import pages.LoginPage;
 import pages.MainPage;
 import utils.Fixture;
@@ -10,7 +13,10 @@ import utils.NoSuchLocatorException;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+
 public class TestMainForm extends Fixture{
+
     private static final Logger log = Logger.getLogger(Fixture.class);
 
     @Test
@@ -21,34 +27,27 @@ public class TestMainForm extends Fixture{
     }
 
     @Test
-    public void testCloseLocation() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
+    @Ignore
+    public void clickCloseLocation() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
         mainPage.clickCloseLocationMenu();
     }
 
     @Test
-    public void testAgreeLocation() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
+    public void clickAgreeLocation() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
         mainPage.clickAgreeCurrentLocation();
     }
 
     @Test
-    public void testCheckChoseAnotherCity() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
+    public void clickCheckChoseAnotherCity() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
         mainPage.clickCloseLocationMenu();
         mainPage.clickCity();
         mainPage.chooseAnotherCity();
-    }
-
-
-    @Test
-    public void clickLogoutCustomer() throws NoSuchLocatorException, InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException {
-        web.openPage(mainUrl);
-        MainPage mainPage = new MainPage(driver);
-        mainPage.clickLogoutButton();
     }
 
     @Test
@@ -63,17 +62,27 @@ public class TestMainForm extends Fixture{
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clearAllField();
         loginPage.fillLoginForm("telishuk@mail.ru", "gfhjkm100");
-        loginPage.clickLoginInButton();
+        loginPage.clickLoginButton();
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        mainPage.clickUserDataForm();
+        mainPage.clickCustomerDataForm();
         mainPage.fillCustomerData("Taras", "Telischuk");
         mainPage.clickRadioButtonMale();
         mainPage.fillCustomerBirthDay("7", "2", "1988");
         mainPage.clickRadioButtonMale();
         mainPage.clickButtonSaveChanges();
        // log.info("<---------- Finished test ---------->");
+
+    }
+
+    @Test
+    public void logoutCustomer() throws Exception, NoSuchLocatorException {
+        web.openPage(mainUrl);
+        MainPage mainPage = new MainPage(driver);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        mainPage.clickLogoutButton();
+        //System.out.println(web.isElementPresent("ButtonLogout"));
 
     }
 

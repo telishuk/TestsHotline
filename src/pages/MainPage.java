@@ -46,7 +46,7 @@ public class MainPage {
     /*
      * Add or change some data in Customer form
      */
-    public void clickUserDataForm() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {
+    public void clickCustomerDataForm() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {
         web.clickButton("ButtonCustomerMenu");
         web.clickLink("CustomerDataLink");
     }
@@ -80,7 +80,8 @@ public class MainPage {
      */
     public void clickLogoutButton() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {
         web.clickButton("ButtonCustomerMenu");
-        web.clickLink("ButtonLogout");
+        web.clickButton("ButtonLogout");
+       // web.clickLink("ButtonLogout");
     }
 
 
