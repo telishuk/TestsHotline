@@ -23,7 +23,13 @@ public class Fixture{
     protected static final Logger log = Logger.getLogger(Fixture.class);
 
 
-    @BeforeClass
+
+    /*
+     * If you want to run the tests separately, then uncomment methods
+     * Otherwise @BeforeClass & @AfterClass will take with RunnerTests.class
+     */
+
+   /* @BeforeClass
     public static void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "C:/Selenium/chromedriver.exe");
         driver = new ChromeDriver();
@@ -37,8 +43,7 @@ public class Fixture{
     public static void tearDown() throws Exception {
         log.info("<--------- Finished tests --------->");
         log.info("<--------- Close browser --------->");
-        //driver.quit();
+        driver.quit();
     }
-
-
+    */
 }
