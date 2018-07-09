@@ -1,7 +1,6 @@
 package tests;
 
 import org.junit.*;
-import org.junit.runners.MethodSorters;
 import org.openqa.selenium.*;
 import pages.LoginPage;
 import pages.MainPage;
@@ -9,6 +8,8 @@ import utils.Fixture;
 import utils.NoSuchLocatorException;
 
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.*;
 
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
@@ -30,8 +31,8 @@ public class TestLoginForm extends Fixture{
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton();
-        System.out.println(web.isElementPresent("LoginErrorsMessages"));
-        //loginPage.displayedMassageErrors();
+        assertTrue("All fields don't empty ", web.isElementPresent("LoginErrorsMessages"));
+
     }
 
     @Test
@@ -43,7 +44,7 @@ public class TestLoginForm extends Fixture{
         LoginPage loginPage = new LoginPage(driver);
         loginPage.fillDataClickEnter("telishuk@mail.ru");
 
-        System.out.println(web.isElementPresent("EmptyFieldError"));
+        assertTrue("Field password is don't empty ", web.isElementPresent("EmptyFieldError"));
     }
 
     @Test
@@ -58,7 +59,7 @@ public class TestLoginForm extends Fixture{
         loginPage.clickLoginButton();
 
         //loginPage.displayedMassageErrors();
-        System.out.println(web.isElementPresent("EmptyFieldError"));
+        assertTrue("Field email is don't empty ", web.isElementPresent("EmptyFieldError"));
     }
 
 
@@ -66,7 +67,7 @@ public class TestLoginForm extends Fixture{
      * Test login Customer and don't logout with @BeforeClass used
      */
     @Test
-    public void loginCustomer() throws Exception, NoSuchLocatorException {
+    public void loginCustomer() throws Exception, NoSuchLocatorException{
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
         mainPage.clickLoginButton();
@@ -76,8 +77,7 @@ public class TestLoginForm extends Fixture{
         loginPage.fillLoginForm("telishuk@mail.ru", "gfhjkm100");
         loginPage.clickLoginButton();
 
-        //System.out.println(web.isElementPresent("ButtonLogin"));
-        //Assert.assertFalse("", web.isElementPresent("ButtonLogin"));
+        assertTrue("Customer is not login", web.isElementPresent("ButtonLogin"));
 
     }
 
@@ -90,9 +90,9 @@ public class TestLoginForm extends Fixture{
     public void logoutCustomer() throws Exception, NoSuchLocatorException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         mainPage.clickLogoutButton();
-        //System.out.println(web.isElementPresent("ButtonLogout"));
+        assertTrue("Customer is not logout", web.isElementPresent("ButtonLogout"));
 
     }
 
@@ -117,7 +117,7 @@ public class TestLoginForm extends Fixture{
     }
 
     @Test
-    //@Ignore
+    @Ignore
     public void testTermOfUseLink() throws Exception, NoSuchLocatorException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);

@@ -14,6 +14,7 @@ import tests.TestRegistrationForm;
 import java.util.concurrent.TimeUnit;
 
 public class Fixture{
+
     protected static WebDriver driver;
     protected String mainUrl = "https://hotline.ua/";
     protected String registerUrl = "https://hotline.ua/register/";
@@ -21,7 +22,7 @@ public class Fixture{
     protected RandomData randomData = new RandomData();
     protected static final Logger log = Logger.getLogger(Fixture.class);
 
-    /*
+
     @BeforeClass
     public static void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "C:/Selenium/chromedriver.exe");
@@ -36,8 +37,8 @@ public class Fixture{
     public static void tearDown() throws Exception {
         log.info("<--------- Finished tests --------->");
         log.info("<--------- Close browser --------->");
-        driver.quit();
+        //driver.quit();
     }
-    */
+
 
 }

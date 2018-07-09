@@ -81,7 +81,6 @@ public class MainPage {
     public void clickLogoutButton() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {
         web.clickButton("ButtonCustomerMenu");
         web.clickButton("ButtonLogout");
-       // web.clickLink("ButtonLogout");
     }
 
 
