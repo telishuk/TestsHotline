@@ -29,7 +29,7 @@ public class Fixture{
      * Otherwise @BeforeClass & @AfterClass will take with RunnerTests.class
      */
 
-   /* @BeforeClass
+    @BeforeClass
     public static void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "C:/Selenium/chromedriver.exe");
         driver = new ChromeDriver();
@@ -45,5 +45,5 @@ public class Fixture{
         log.info("<--------- Close browser --------->");
         driver.quit();
     }
-    */
+
 }

@@ -30,16 +30,16 @@ public class MainPage {
         web.closeLocationMenu("CloseLocationMenu");
     }
 
-    public void clickAgreeCurrentLocation() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
-        web.agreeConfirmLocation("ButtonConfirmCurrentLocation");
+    public void clickAgreeLocation() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.agreeConfirmLocation("ButtonAgreeLocation");
     }
 
     public void clickCity() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
         web.clickButtonCity("ButtonCity");
     }
 
-    public void chooseAnotherCity() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
-        web.clickButtonCity("ChooseCityOdessa");
+    public void selectAnotherCity() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickButtonCity("CityOdessa");
     }
 
 
@@ -47,7 +47,7 @@ public class MainPage {
      * Add or change some data in Customer form
      */
     public void clickCustomerDataForm() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {
-        web.clickButton("ButtonCustomerMenu");
+        web.clickButton("CustomerMenu");
         web.clickLink("CustomerDataLink");
     }
 
@@ -79,7 +79,7 @@ public class MainPage {
      * Enter to customer menu and click Customer data
      */
     public void clickLogoutButton() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {
-        web.clickButton("ButtonCustomerMenu");
+        web.clickButton("CustomerMenu");
         web.clickButton("ButtonLogout");
     }
 

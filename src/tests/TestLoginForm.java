@@ -21,6 +21,8 @@ public class TestLoginForm extends Fixture{
         MainPage mainPage = new MainPage(driver);
         mainPage.clickLoginButton();
         mainPage.clickMainLogo();
+
+        assertTrue("Not switch to main page", web.isElementPresent("LogoMainPage"));
     }
 
     @Test
@@ -31,6 +33,7 @@ public class TestLoginForm extends Fixture{
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton();
+
         assertTrue("All fields don't empty ", web.isElementPresent("LoginErrorsMessages"));
 
     }
@@ -54,12 +57,12 @@ public class TestLoginForm extends Fixture{
         mainPage.clickLoginButton();
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clearPasswordField();
-        loginPage.fillPasswordField(randomData.getRandomString());
+        loginPage.clearAllField();
+        loginPage.fillLoginForm("telishuk@mail.ru", randomData.getRandomString());
         loginPage.clickLoginButton();
-
         //loginPage.displayedMassageErrors();
-        assertTrue("Field email is don't empty ", web.isElementPresent("EmptyFieldError"));
+
+        assertTrue("Password is correct", web.isElementPresent("LoginErrorsMessages"));
     }
 
 
@@ -77,7 +80,7 @@ public class TestLoginForm extends Fixture{
         loginPage.fillLoginForm("telishuk@mail.ru", "gfhjkm100");
         loginPage.clickLoginButton();
 
-        assertTrue("Customer is not login", web.isElementPresent("ButtonLogin"));
+        assertTrue("Customer is login", web.isElementPresent("ButtonLogin"));
 
     }
 
@@ -92,18 +95,21 @@ public class TestLoginForm extends Fixture{
         MainPage mainPage = new MainPage(driver);
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         mainPage.clickLogoutButton();
+
         assertTrue("Customer is not logout", web.isElementPresent("ButtonLogout"));
 
     }
 
     @Test
-    public void testRegistrationButton() throws Exception, NoSuchLocatorException {
+    public void testRegistrationLink() throws Exception, NoSuchLocatorException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
         mainPage.clickLoginButton();
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickRegisterLink();
+
+        assertTrue("Registration form is not displayed", web.isElementPresent("RegistrationForm"));
 
     }
 
@@ -114,10 +120,11 @@ public class TestLoginForm extends Fixture{
         mainPage.clickLoginButton();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickForgotLink();
+        assertTrue("I remember the password", web.isElementPresent("ForgotPasswordForm"));
     }
 
     @Test
-    @Ignore
+    //@Ignore
     public void testTermOfUseLink() throws Exception, NoSuchLocatorException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
@@ -126,8 +133,9 @@ public class TestLoginForm extends Fixture{
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickTermOfUseLink();
 
-        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "W");
-        driver.switchTo().defaultContent();
+        //Why don't work???
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.TAB);
+
     }
 
 

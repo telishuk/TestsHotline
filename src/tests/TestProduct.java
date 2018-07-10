@@ -33,6 +33,12 @@ public class TestProduct extends Fixture {
 
     }
 
+    @Test
+    public void test2() throws Exception, NoSuchLocatorException {
+        web.openPage(mainUrl);
+
+    }
+
 
 
 }

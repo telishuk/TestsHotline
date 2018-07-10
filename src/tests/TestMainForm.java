@@ -1,10 +1,10 @@
 package tests;
 
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 import pages.LoginPage;
 import pages.MainPage;
 import utils.Fixture;
@@ -27,27 +27,34 @@ public class TestMainForm extends Fixture{
     }
 
     @Test
-    @Ignore
+    //@Ignore
     public void clickCloseLocation() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
+        Assert.assertTrue("Button not found", web.isElementPresent("CloseLocationMenu"));
         mainPage.clickCloseLocationMenu();
+        Assert.assertFalse("Location menu is displayed", web.isElementPresent("LocationMenu"));
+
     }
 
     @Test
+    //@Ignore
     public void clickAgreeLocation() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
-        mainPage.clickAgreeCurrentLocation();
+        Assert.assertTrue("Button not found", web.isElementPresent("ButtonAgreeLocation"));
+        mainPage.clickAgreeLocation();
+        Assert.assertFalse("Location menu is displayed", web.isElementPresent("LocationMenu"));
     }
 
     @Test
-    public void clickCheckChoseAnotherCity() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
+    public void clickAnotherCity() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
         mainPage.clickCloseLocationMenu();
         mainPage.clickCity();
-        mainPage.chooseAnotherCity();
+        Assert.assertTrue("City is not selected", web.isElementPresent("CityOdessa"));
+        mainPage.selectAnotherCity();
     }
 
     @Test
@@ -69,8 +76,28 @@ public class TestMainForm extends Fixture{
         mainPage.clickCustomerDataForm();
         mainPage.fillCustomerData("Taras", "Telischuk");
         mainPage.clickRadioButtonMale();
-        mainPage.fillCustomerBirthDay("7", "2", "1988");
-        mainPage.clickRadioButtonMale();
+        mainPage.clickButtonSaveChanges();
+        Assert.assertEquals("Data was NOT added!", "Taras", web.getValue("CustomerFirstNameField"));
+        // log.info("<---------- Finished test ---------->");
+    }
+
+
+    @Test
+    public void fillCustomerBirthday() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
+        web.openPage(mainUrl);
+        //log.info("<---------- Start test filling customer data ---------->");
+
+        MainPage mainPage = new MainPage(driver);
+        mainPage.clickLoginButton();
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clearAllField();
+        loginPage.fillLoginForm("telishuk@mail.ru", "gfhjkm100");
+        loginPage.clickLoginButton();
+
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        mainPage.clickCustomerDataForm();
+        mainPage.fillCustomerBirthDay("6", "5", "1965");
         mainPage.clickButtonSaveChanges();
        // log.info("<---------- Finished test ---------->");
 
@@ -80,10 +107,18 @@ public class TestMainForm extends Fixture{
     public void logoutCustomer() throws Exception, NoSuchLocatorException {
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
+        mainPage.clickLoginButton();
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clearAllField();
+        loginPage.fillLoginForm("telishuk@mail.ru", "gfhjkm100");
+        loginPage.clickLoginButton();
+
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         mainPage.clickLogoutButton();
-        //System.out.println(web.isElementPresent("ButtonLogout"));
 
+        //Assert.assertFalse("Customer is logout", web.isElementPresent("LoginForm"));
+        Assert.assertTrue("Customer is not logout", web.isElementPresent("ButtonLogin"));
     }
 
 

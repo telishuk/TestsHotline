@@ -87,8 +87,10 @@ public class WebElementActions {
      */
     public boolean isElementPresent(String elementLocator) throws InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException, NoSuchLocatorException {
        if (!driver.findElement(Readouts.ui(elementLocator)).isDisplayed()){
+           log.info("Element '" + elementLocator + "' is NOT Displayed Present!");
            return false;
        }
+       log.info("Element '" + elementLocator + "' is Present");
        return true;
     }
 
@@ -230,8 +232,12 @@ public class WebElementActions {
 
     public String getElementsText(String elementsLocator) throws InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException, NoSuchLocatorException {
         return driver.findElements(Readouts.ui(elementsLocator)).toString();
+        //return driver.findElement(Readouts.ui(elementsLocator)).getText("");
     }
 
+    public String getValue(String valueLocator) throws InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException, NoSuchLocatorException {
+        return driver.findElement(Readouts.ui(valueLocator)).getAttribute("Value");
+    }
 
     /*
      * Select value from drop-dawn list
