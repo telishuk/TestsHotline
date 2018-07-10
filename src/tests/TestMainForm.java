@@ -5,19 +5,21 @@ import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.MainPage;
-import utils.Fixture;
-import utils.NoSuchLocatorException;
+import utils.*;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
-public class TestMainForm extends Fixture{
+public class TestMainForm {
 
-    private static final Logger log = Logger.getLogger(Fixture.class);
+    public WebDriver driver = RunnerTests.driver;
+    public WebElementActions web = new WebElementActions(driver);
+    private static final String mainUrl = "https://hotline.ua/";
 
     @Test
     public void switchToMainURL() throws Exception, NoSuchLocatorException {
@@ -97,7 +99,7 @@ public class TestMainForm extends Fixture{
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         mainPage.clickCustomerDataForm();
-        mainPage.fillCustomerBirthDay("6", "5", "1965");
+        mainPage.fillCustomerBirthDay("3", "5", "1988");
         mainPage.clickButtonSaveChanges();
        // log.info("<---------- Finished test ---------->");
 

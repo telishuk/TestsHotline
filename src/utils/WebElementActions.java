@@ -148,7 +148,7 @@ public class WebElementActions {
         actions.perform(); // always need
         clickButton(clickToElement);
 
-        log.info("Moved to element" + actions + " and clicked on " + clickToElement);
+        log.info("Moved to element " + moveToLocator + " and clicked on " + clickToElement);
 
     }
 
@@ -176,6 +176,10 @@ public class WebElementActions {
 
     public  void pressPageUpKey(String inputLocator) throws InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException, NoSuchLocatorException {
         driver.findElement(Readouts.ui(inputLocator)).sendKeys(Keys.PAGE_UP);
+    }
+
+    public  void pressPageDownKey(String inputLocator) throws InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException, NoSuchLocatorException {
+        driver.findElement(Readouts.ui(inputLocator)).sendKeys(Keys.PAGE_DOWN);
     }
 
     public  void pressCtrlKey(String inputLocator) throws InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException, NoSuchLocatorException {

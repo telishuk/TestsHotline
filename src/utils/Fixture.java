@@ -3,8 +3,6 @@ package utils;
 import org.apache.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import tests.TestLoginForm;
@@ -15,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Fixture{
 
+
     protected static WebDriver driver;
     protected String mainUrl = "https://hotline.ua/";
     protected String registerUrl = "https://hotline.ua/register/";
@@ -23,11 +22,11 @@ public class Fixture{
     protected static final Logger log = Logger.getLogger(Fixture.class);
 
 
-
     /*
      * If you want to run the tests separately, then uncomment methods
      * Otherwise @BeforeClass & @AfterClass will take with RunnerTests.class
      */
+
 
     @BeforeClass
     public static void setUp() throws Exception {
@@ -45,5 +44,6 @@ public class Fixture{
         log.info("<--------- Close browser --------->");
         driver.quit();
     }
+
 
 }

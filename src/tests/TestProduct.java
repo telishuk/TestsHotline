@@ -1,43 +1,62 @@
 package tests;
 
+import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 
 
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.MainPage;
-import utils.Fixture;
-import utils.NoSuchLocatorException;
+import pages.ProductPage;
+import utils.*;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertTrue;
 
-public class TestProduct extends Fixture {
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestProduct {
+
+    public WebDriver driver = RunnerTests.driver;
+    public WebElementActions web = new WebElementActions(driver);
+    public static final String mainUrl = "https://hotline.ua/";
+
+    public static final String email = "telishuk@mail.ru";
+    public static final String password = "gfhjkm100";
 
 
     @Test
-    public void test1() throws Exception, NoSuchLocatorException {
+    public void loginCustomer() throws Exception, NoSuchLocatorException{
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
-        mainPage.clickCloseLocationMenu();
+        mainPage.clickAgreeLocation();
         mainPage.clickLoginButton();
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clearAllField();
-        loginPage.fillLoginForm("telishuk@mail.ru", "gfhjkm100");
-
+        loginPage.fillLoginForm(email, password);
         loginPage.clickLoginButton();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        mainPage.clickCustomerDataForm();
-        driver.findElement(By.xpath(".//div[@class = 'cell-6 cell-sm']/label[1]")).click();
+
+        assertTrue("Customer is not login", web.isElementPresent("ButtonLogin"));
 
     }
 
     @Test
-    public void test2() throws Exception, NoSuchLocatorException {
-        web.openPage(mainUrl);
+    public void selectProductAddToBasket() throws Exception, NoSuchLocatorException {
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 
+        ProductPage productPage = new ProductPage(driver);
+        productPage.openProductMobile();
+        productPage.selectManufacturer();
     }
+
+
+
+
 
 
 

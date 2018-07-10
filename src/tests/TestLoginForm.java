@@ -1,11 +1,11 @@
 package tests;
 
+import org.apache.log4j.Logger;
 import org.junit.*;
 import org.openqa.selenium.*;
 import pages.LoginPage;
 import pages.MainPage;
-import utils.Fixture;
-import utils.NoSuchLocatorException;
+import utils.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +13,15 @@ import static org.junit.Assert.*;
 
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
-public class TestLoginForm extends Fixture{
+public class TestLoginForm {
+
+    public WebDriver driver = RunnerTests.driver;
+    public WebElementActions web = new WebElementActions(driver);
+    private static final String mainUrl = "https://hotline.ua/";
+    private RandomData randomData = new RandomData();
+    public static final String email = "telishuk@mail.ru";
+    public static final String password = "gfhjkm100";
+
 
     @Test
     public void switchToMainPage() throws Exception, NoSuchLocatorException {
@@ -45,7 +53,7 @@ public class TestLoginForm extends Fixture{
         mainPage.clickLoginButton();
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.fillDataClickEnter("telishuk@mail.ru");
+        loginPage.fillDataClickEnter(email);
 
         assertTrue("Field password is don't empty ", web.isElementPresent("EmptyFieldError"));
     }
@@ -58,7 +66,7 @@ public class TestLoginForm extends Fixture{
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clearAllField();
-        loginPage.fillLoginForm("telishuk@mail.ru", randomData.getRandomString());
+        loginPage.fillLoginForm(email, randomData.getRandomString());
         loginPage.clickLoginButton();
         //loginPage.displayedMassageErrors();
 
@@ -77,7 +85,7 @@ public class TestLoginForm extends Fixture{
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clearAllField();
-        loginPage.fillLoginForm("telishuk@mail.ru", "gfhjkm100");
+        loginPage.fillLoginForm(email, password);
         loginPage.clickLoginButton();
 
         assertTrue("Customer is login", web.isElementPresent("ButtonLogin"));

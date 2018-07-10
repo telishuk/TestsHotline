@@ -1,21 +1,25 @@
 package tests;
 
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.WebDriver;
 import pages.RegistrationPage;
-import utils.Fixture;
-import utils.NoSuchLocatorException;
-import utils.RandomData;
+import utils.*;
 
 import java.io.IOException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
-public class TestRegistrationForm extends Fixture{
+public class TestRegistrationForm {
 
-    private static final Logger log = Logger.getLogger(Fixture.class);
+    public WebDriver driver = RunnerTests.driver;
+    public WebElementActions web = new WebElementActions(driver);
+    private static final String registerUrl = "https://hotline.ua/register/";
+    private RandomData randomData = new RandomData();
+
 
     @Test
     public void emptyFieldsError() throws Exception, NoSuchLocatorException {
@@ -23,7 +27,7 @@ public class TestRegistrationForm extends Fixture{
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.clickRegisterButton();
         //registrationPage.displayedMassageErrors();
-        System.out.println(web.isElementPresent("RegistrationErrorsMassage"));
+        Assert.assertTrue("Button was not click", web.isElementPresent("RegistrationErrorsMassage"));
     }
 
     @Test
@@ -33,7 +37,7 @@ public class TestRegistrationForm extends Fixture{
         registrationPage.fillRegisterEmail("telishuk.t@gmail.com");
         registrationPage.clickRegisterButton();
         //registrationPage.displayedMassageErrors();
-        System.out.println(web.isElementPresent("RegistrationErrorsMassage"));
+        Assert.assertTrue("Button was not click", web.isElementPresent("RegistrationErrorsMassage"));
     }
 
     @Test
@@ -43,15 +47,16 @@ public class TestRegistrationForm extends Fixture{
         registrationPage.fillRegisterPassword("sdfgsdfgsdfhg");
         registrationPage.clickRegisterButton();
         //registrationPage.displayedMassageErrors();
-        System.out.println(web.isElementPresent("RegistrationErrorsMassage"));
+        Assert.assertTrue("Button was not click", web.isElementPresent("RegistrationErrorsMassage"));
     }
 
     @Test
     public void testShowPasswordCheckBox() throws Exception, NoSuchLocatorException {
         web.openPage(registerUrl);
         RegistrationPage registrationPage = new RegistrationPage(driver);
-        registrationPage.fillRegisterPassword("sdfgsdfgsdfhg");
+        registrationPage.fillRegisterPassword(randomData.getRandomString());
         registrationPage.clickCheckBox();
+
     }
 
     /*
@@ -65,7 +70,7 @@ public class TestRegistrationForm extends Fixture{
         registrationPage.fillRegisterForm("tolik.morozov@mail.ru", "КАРАМЕЛЬ",randomData.getRandomString() );
         registrationPage.clickRegisterButton();
         //registrationPage.displayedMassageErrors();
-        System.out.println(web.isElementPresent("RegistrationErrorsMassage"));
+        Assert.assertTrue("Button was not click", web.isElementPresent("RegistrationErrorsMassage"));
     }
 
     @Test
@@ -75,7 +80,7 @@ public class TestRegistrationForm extends Fixture{
         registrationPage.fillRegisterForm("карамель@mail.ru", "Karamelka", randomData.getRandomString());
         registrationPage.clickRegisterButton();
         //registrationPage.displayedMassageErrors();
-        System.out.println(web.isElementPresent("RegistrationErrorsMassage"));
+        Assert.assertTrue("Button was not click", web.isElementPresent("RegistrationErrorsMassage"));
     }
 
     @Test

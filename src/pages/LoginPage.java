@@ -9,6 +9,7 @@ import utils.WebElementActions;
 import java.io.IOException;
 
 public class LoginPage {
+
     WebElementActions web;
     private static final Logger log = Logger.getLogger(TestLoginForm.class);
 
