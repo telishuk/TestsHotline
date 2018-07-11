@@ -79,7 +79,7 @@ public class TestMainForm {
         mainPage.fillCustomerData("Taras", "Telischuk");
         mainPage.clickRadioButtonMale();
         mainPage.clickButtonSaveChanges();
-        Assert.assertEquals("Data was NOT added!", "Taras", web.getValue("CustomerFirstNameField"));
+        Assert.assertEquals("Data was NOT added!", "Taras", web.getValueOfElement("CustomerFirstNameField"));
         // log.info("<---------- Finished test ---------->");
     }
 

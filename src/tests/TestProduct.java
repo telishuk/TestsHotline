@@ -13,12 +13,13 @@ import pages.MainPage;
 import pages.ProductPage;
 import utils.*;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
 
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.JVM)
 public class TestProduct {
 
     public WebDriver driver = RunnerTests.driver;
@@ -30,6 +31,7 @@ public class TestProduct {
 
 
     @Test
+    @Ignore
     public void loginCustomer() throws Exception, NoSuchLocatorException{
         web.openPage(mainUrl);
         MainPage mainPage = new MainPage(driver);
@@ -46,12 +48,47 @@ public class TestProduct {
     }
 
     @Test
-    public void selectProductAddToBasket() throws Exception, NoSuchLocatorException {
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+    @Ignore
+    public void checkBasketIsEmpty() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
+        web.openPage(mainUrl);
+        MainPage mainPage = new MainPage(driver);
+        mainPage.checkEmptyBasket();
+        assertTrue("In the basket there is a product", web.isElementPresent("BasketEmpty"));
+        mainPage.closeEmpryBasket();
+    }
 
+    @Test
+    @Ignore
+    public void checkFilterPhone() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
+        web.openPage(mainUrl);
         ProductPage productPage = new ProductPage(driver);
         productPage.openProductMobile();
+        productPage.closeStageBorder();
         productPage.selectManufacturer();
+        assertTrue("Phones not filtered", web.isElementPresent("ManufacturerApple"));
+    }
+
+
+    @Test
+    @Ignore
+    public void selectProductAuto() throws Exception, NoSuchLocatorException {
+        web.openPage(mainUrl);
+        ProductPage productPage = new ProductPage(driver);
+        productPage.openProductAuto();
+        productPage.selectProductAuto();
+        productPage.clickImgProductAuto();
+        assertTrue("Product not selected", web.isElementPresent("ImageProductAuto"));
+    }
+
+    @Test
+   // @Ignore
+    public void addProductToBasket() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
+        web.openPage(mainUrl);
+        ProductPage productPage = new ProductPage(driver);
+        productPage.openProductMobile();
+        productPage.closeStageBorder();
+        productPage.clickImgProductMobile();
+        productPage.clickBuyProduct();
     }
 
 

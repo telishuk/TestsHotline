@@ -1,6 +1,5 @@
 package tests;
 
-import org.apache.log4j.Logger;
 import org.junit.*;
 import org.openqa.selenium.*;
 import pages.LoginPage;

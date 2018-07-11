@@ -31,7 +31,6 @@ public class RunnerTests {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "C:/Selenium/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();

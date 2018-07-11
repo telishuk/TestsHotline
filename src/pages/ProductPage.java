@@ -22,19 +22,43 @@ public class ProductPage {
 
     }
 
+    public void openProductAuto() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickElement("ProductMenuAuto");
+    }
+
     public void selectManufacturer() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
         web.clickElement("ManufacturerApple");
         log.info("Product is filtered manufacturer");
 
     }
 
-    public void selectFilteredProduct() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
-        web.clickElement("ChoosePhone");
+    public void selectProductAuto() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException, InterruptedException {
+        web.moveToElementAndClick("Tires&Disk", "TiresCar");
     }
 
-    public void addToBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
-        web.clickButton("AddToBasketButton");
-        //log.info("Add to basket button is clicked");
+    public void clickImgProductAuto() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickElement("ImageProductAuto");
+    }
+
+    public void clickImgProductMobile() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickElement("ImageProductMobile");
+    }
+
+
+    public void clickBuyProduct() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.doFocusToElementAndClick("FocusSeller","ButtonBuyProduct");
+    }
+
+
+    public boolean checkCorrectProductInBasket(){
+        return false;
+    }
+
+
+    public void closeStageBorder() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        if (web.isElementPresent("StageBorder")){
+            web.clickElement("StageBorderClose");
+        }
     }
 
 }

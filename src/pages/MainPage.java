@@ -1,7 +1,7 @@
 package pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import utils.NoSuchLocatorException;
 import utils.WebElementActions;
 
@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class MainPage {
     WebElementActions web;
+    private static final Logger log = Logger.getLogger(ProductPage.class);
 
     public MainPage(WebDriver driver) {
         web = new WebElementActions(driver);
@@ -82,6 +83,22 @@ public class MainPage {
         web.clickButton("CustomerMenu");
         web.clickButton("ButtonLogout");
     }
+
+
+    public void checkEmptyBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickElement("ButtonBasket");
+        if (web.isElementPresent("BasketEmpty")){
+            log.info("Basket is empty");
+        }else {
+            web.isElementPresent("ClearBasket");
+        }
+    }
+
+    public void closeEmpryBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickElement("BasketEmptyClose");
+    }
+
+
 
 
 }

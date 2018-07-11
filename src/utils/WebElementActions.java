@@ -59,7 +59,7 @@ public class WebElementActions {
      */
     public void clickElement(String elementLocator) throws InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException, NoSuchLocatorException {
         driver.findElement(Readouts.ui(elementLocator)).click();
-        log.info("Click on link " + elementLocator);
+        log.info("Click element " + elementLocator);
     }
 
 
@@ -191,6 +191,15 @@ public class WebElementActions {
     }
 
     /*
+     *This method is used to do Focus to Element
+     * Use Actions class
+     */
+    public void doFocusToElement(String focusElementLocator) throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        new Actions(driver).moveToElement(getElement(focusElementLocator)).perform();
+        log.info("Focus in to element" + focusElementLocator);
+    }
+
+    /*
      *This method is used to do Focus to Element and Click
      * Use Actions class
      */
@@ -239,7 +248,7 @@ public class WebElementActions {
         //return driver.findElement(Readouts.ui(elementsLocator)).getText("");
     }
 
-    public String getValue(String valueLocator) throws InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException, NoSuchLocatorException {
+    public String getValueOfElement(String valueLocator) throws InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException, NoSuchLocatorException {
         return driver.findElement(Readouts.ui(valueLocator)).getAttribute("Value");
     }
 
