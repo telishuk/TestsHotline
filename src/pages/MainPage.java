@@ -85,17 +85,18 @@ public class MainPage {
     }
 
 
-    public void checkEmptyBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+    public void goToTheBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickButton("GoToBasket");
+    }
+    public void checkBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
         web.clickElement("ButtonBasket");
-        if (web.isElementPresent("BasketEmpty")){
+        if (web.isElementPresent("BasketForm")){
             log.info("Basket is empty");
-        }else {
-            web.isElementPresent("ClearBasket");
         }
     }
 
-    public void closeEmpryBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
-        web.clickElement("BasketEmptyClose");
+    public void closeBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickElement("BasketFormClose");
     }
 
 

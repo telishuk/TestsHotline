@@ -17,6 +17,10 @@ public class ProductPage {
         web = new WebElementActions(driver);
     }
 
+    public void switchToMainPage() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickLink("LogoMainPage");
+    }
+
     public void openProductMobile() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
         web.moveToElementAndClick("ProductMenuMobile", "Mobile&Smartphone");
 
@@ -29,7 +33,6 @@ public class ProductPage {
     public void selectManufacturer() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
         web.clickElement("ManufacturerApple");
         log.info("Product is filtered manufacturer");
-
     }
 
     public void selectProductAuto() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException, InterruptedException {
@@ -46,7 +49,8 @@ public class ProductPage {
 
 
     public void clickBuyProduct() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
-        web.doFocusToElementAndClick("FocusSeller","ButtonBuyProduct");
+        web.doFocusToElement("ListShops");
+        web.doFocusToElementAndClick("FocusSeller", "ButtonBuyProduct");
     }
 
 
