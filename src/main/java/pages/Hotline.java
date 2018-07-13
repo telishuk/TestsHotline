@@ -1,15 +1,18 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
+import utils.WebDriverWrapper;
+import utils.WebElementActions;
 
 
 public class Hotline {
+    public WebElementActions web;
     public MainPage mainPage;
     public LoginPage loginPage;
     public RegistrationPage registrationPage;
     public ProductPage productPage;
 
-    public Hotline(WebDriver driver) {
+    public Hotline(WebDriverWrapper driver) {
+        web = new WebElementActions(driver);
 
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);

@@ -1,15 +1,17 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-import utils.Fixture;
-import utils.NoSuchLocatorException;
-import utils.WebElementActions;
+import org.apache.log4j.Logger;
+import utils.*;
+
 import java.io.IOException;
 
-public class RegistrationPage extends Fixture{
+public class RegistrationPage extends Page{
 
-    public RegistrationPage(WebDriver driver) {
-        web = new WebElementActions(driver);
+    private static final String REG_URL = PropertyLoader.loadProperty("site.registerUrl");
+    private static final Logger log = Logger.getLogger(ClassNameUtil.getCurrentClassName());
+
+    public RegistrationPage(WebDriverWrapper driver) {
+        super(driver, REG_URL);
     }
 
     public void clickRegisterButton() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {

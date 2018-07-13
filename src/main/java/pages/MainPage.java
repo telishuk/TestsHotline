@@ -1,19 +1,17 @@
 package pages;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import utils.Fixture;
-import utils.NoSuchLocatorException;
-import utils.WebElementActions;
+import utils.*;
 
 import java.io.IOException;
 
-public class MainPage extends Fixture{
+public class MainPage extends Page{
 
-    private static final Logger log = Logger.getLogger(MainPage.class);
+    private static final String MAIN_URL = PropertyLoader.loadProperty("site.mainUrl");
+    private static final Logger log = Logger.getLogger(ClassNameUtil.getCurrentClassName());
 
-    public MainPage(WebDriver driver) {
-        web = new WebElementActions(driver);
+    public MainPage(WebDriverWrapper driver) {
+        super(driver, MAIN_URL);
     }
 
     public void clickMainLogo() throws IOException, InstantiationException, CloneNotSupportedException, IllegalAccessException, NoSuchLocatorException {

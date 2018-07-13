@@ -3,12 +3,11 @@ package utils;
 import org.apache.log4j.Logger;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import pages.LoginPage;
 
 import java.io.IOException;
 
 public class LoginFixture extends Fixture{
-    private static final Logger log = Logger.getLogger(LoginFixture.class);
+    private static final Logger log = Logger.getLogger(ClassNameUtil.getCurrentClassName());
 
     @BeforeSuite
     public static void login() throws NoSuchLocatorException, InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException {

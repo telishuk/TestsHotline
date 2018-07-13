@@ -12,7 +12,7 @@ public class ReadoutsSilgleton {
     private static volatile ReadoutsSilgleton instance;
     private static Properties properties = new Properties();
     private static volatile Map<String, String> extractData;
-    protected static final Logger log = Logger.getLogger(Fixture.class);
+    private static final Logger log = Logger.getLogger(ClassNameUtil.getCurrentClassName());
 
 
     /*private ReadoutsSilgleton(){

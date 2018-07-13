@@ -14,12 +14,12 @@ public class WebElementActions {
 
     private WebDriver driver;
     public static WebDriverWait waitForElement;
-    private static final Logger log = Logger.getLogger(WebElementActions.class);
+    private static final Logger log = Logger.getLogger(ClassNameUtil.getCurrentClassName());
 
 
     public WebElementActions(WebDriver driver) {
         this.driver = driver;
-        waitForElement = new WebDriverWait(driver, 20);
+        waitForElement = new WebDriverWait(driver, 10);
     }
 
     public void openPage(String siteUrl){
@@ -88,12 +88,14 @@ public class WebElementActions {
      *Method is used to check that elements is present on page
      */
     public boolean isElementPresent(String elementLocator) throws InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException, NoSuchLocatorException {
-       if (!driver.findElement(Readouts.ui(elementLocator)).isDisplayed()){
-           log.info("Element '" + elementLocator + "' is NOT Displayed Present!");
+        List<WebElement> list = driver.findElements(Readouts.ui(elementLocator));
+        if (list.size() == 0){
+           log.warn("Element '" + elementLocator + "' is NOT Displayed Present!");
            return false;
-       }
-       log.info("Element '" + elementLocator + "' is Present");
-       return true;
+        }else {
+            log.info("Element '" + elementLocator + "' is Present");
+            return list.get(0).isDisplayed();
+        }
     }
 
     private boolean isElementPresent(By by) {

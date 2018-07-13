@@ -1,15 +1,14 @@
 package utils;
 
 import org.openqa.selenium.By;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import org.apache.log4j.Logger;
 
 public class Readouts {
-    public static String uiMappingFile = "src/UIMapping.Properties";
-    //private static final Logger log = Logger.getLogger(Readouts.class);
+    public static String uiMappingFile = "src/main/resources/UIMapping.Properties";
+    private static final Logger log = Logger.getLogger(ClassNameUtil.getCurrentClassName());
 
     /*
      *  Return value from .properties file
