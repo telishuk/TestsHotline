@@ -2,16 +2,15 @@ package pages;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import tests.TestLoginForm;
+import utils.Fixture;
 import utils.NoSuchLocatorException;
 import utils.WebElementActions;
 
 import java.io.IOException;
 
-public class LoginPage {
+public class LoginPage extends Fixture{
 
-    WebElementActions web;
-    private static final Logger log = Logger.getLogger(TestLoginForm.class);
+    private static final Logger log = Logger.getLogger(LoginPage.class);
 
     public LoginPage(WebDriver driver) {
         web = new WebElementActions(driver);

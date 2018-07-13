@@ -1,13 +1,12 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
+import utils.Fixture;
 import utils.NoSuchLocatorException;
 import utils.WebElementActions;
-
 import java.io.IOException;
 
-public class RegistrationPage {
-    WebElementActions web;
+public class RegistrationPage extends Fixture{
 
     public RegistrationPage(WebDriver driver) {
         web = new WebElementActions(driver);

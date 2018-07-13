@@ -2,14 +2,15 @@ package pages;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import utils.Fixture;
 import utils.NoSuchLocatorException;
 import utils.WebElementActions;
 
 import java.io.IOException;
 
-public class MainPage {
-    WebElementActions web;
-    private static final Logger log = Logger.getLogger(ProductPage.class);
+public class MainPage extends Fixture{
+
+    private static final Logger log = Logger.getLogger(MainPage.class);
 
     public MainPage(WebDriver driver) {
         web = new WebElementActions(driver);
@@ -88,17 +89,28 @@ public class MainPage {
     public void goToTheBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
         web.clickButton("GoToBasket");
     }
+    /*
     public void checkBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
         web.clickElement("ButtonBasket");
-        if (web.isElementPresent("BasketForm")){
+        if (web.isElementPresent("BasketEmpty")){
             log.info("Basket is empty");
         }
     }
+    */
 
     public void closeBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
         web.clickElement("BasketFormClose");
     }
 
+
+    public void checkBasket() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {
+        web.clickElement("ButtonBasket");
+        if (web.isElementPresent("BasketEmpty")){
+            log.info("Basket is empty");
+        }else{
+            web.clickButton("GoToBasket");
+        }
+    }
 
 
 

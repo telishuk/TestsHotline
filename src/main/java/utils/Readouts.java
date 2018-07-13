@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class Readouts {
     public static String uiMappingFile = "src/UIMapping.Properties";
@@ -46,19 +46,18 @@ public class Readouts {
         System.out.println(target);
         */
 
-        switch (findMethod){
-            case "id":
-                return By.id(target);
-            case "xpath":
-                return By.xpath(target);
-            case "name":
-                return By.name(target);
-            case "class":
-                return By.className(target);
-            case "cssSelector":
-                return By.cssSelector(target);
-            default:
-                throw new NoSuchLocatorException("<--------- Locator not found --------->");
+        if (findMethod.equals("id")) {
+            return By.id(target);
+        } else if (findMethod.equals("xpath")) {
+            return By.xpath(target);
+        } else if (findMethod.equals("name")) {
+            return By.name(target);
+        } else if (findMethod.equals("class")) {
+            return By.className(target);
+        } else if (findMethod.equals("cssSelector")) {
+            return By.cssSelector(target);
+        } else {
+            throw new NoSuchLocatorException("<--------- Locator not found --------->");
         }
 
     }

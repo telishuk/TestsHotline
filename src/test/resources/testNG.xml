@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="firstTestSuite" verbose="1" >
+    <test name="SmokeTest">
+        <classes>
+            <class name="tests.TestMainForm"/>
+            <!--<class name="tests.TestLoginForm"/>
+            <class name="tests.TestRegistrationForm"/>
+            <class name="tests.TestProduct"/>-->
+        </classes>
+    </test>
+</suite>

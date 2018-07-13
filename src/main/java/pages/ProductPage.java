@@ -2,15 +2,14 @@ package pages;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import utils.Fixture;
 import utils.NoSuchLocatorException;
-import utils.RunnerTests;
 import utils.WebElementActions;
 
 import java.io.IOException;
 
-public class ProductPage {
+public class ProductPage extends Fixture{
 
-    WebElementActions web;
     private static final Logger log = Logger.getLogger(ProductPage.class);
 
     public ProductPage(WebDriver driver) {

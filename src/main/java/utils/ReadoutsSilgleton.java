@@ -39,19 +39,18 @@ public class ReadoutsSilgleton {
         String findLocator = partsOfLocator[0].substring(0, partsOfLocator[0].length() - 1);
         String target = partsOfLocator[1];
 
-        switch (findLocator){
-            case "id":
-                return By.id(target);
-            case "xpath":
-                return By.xpath(target);
-            case "name":
-                return By.name(target);
-            case "class":
-                return By.className(target);
-            case "cssSelector":
-                return By.cssSelector(target);
-            default:
-                throw new NoSuchLocatorException("Locator not found");
+        if (findLocator.equals("id")) {
+            return By.id(target);
+        } else if (findLocator.equals("xpath")) {
+            return By.xpath(target);
+        } else if (findLocator.equals("name")) {
+            return By.name(target);
+        } else if (findLocator.equals("class")) {
+            return By.className(target);
+        } else if (findLocator.equals("cssSelector")) {
+            return By.cssSelector(target);
+        } else {
+            throw new NoSuchLocatorException("Locator not found");
         }
 
     }

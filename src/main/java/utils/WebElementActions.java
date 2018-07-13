@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class WebElementActions {
+
     private WebDriver driver;
     public static WebDriverWait waitForElement;
     private static final Logger log = Logger.getLogger(WebElementActions.class);
@@ -45,6 +46,7 @@ public class WebElementActions {
         driver.findElement(Readouts.ui(buttonLocator)).click();
         log.info("Click on button " + buttonLocator);
     }
+
 
     /*
      *Click a link
