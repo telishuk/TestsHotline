@@ -7,11 +7,10 @@ import java.io.IOException;
 
 public class ProductPage extends Page{
 
-    private static final String MAIN_URL = PropertyLoader.loadProperty("site.mainUrl");
     private static final Logger log = Logger.getLogger(ClassNameUtil.getCurrentClassName());
 
     public ProductPage(WebDriverWrapper driver) {
-        super(driver, MAIN_URL);
+        super(driver);
     }
 
     public void switchToMainPage() throws IOException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IllegalAccessException {

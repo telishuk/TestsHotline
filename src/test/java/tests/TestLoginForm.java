@@ -15,7 +15,7 @@ public class TestLoginForm extends Fixture{
 
     @Test
     public void switchToMainPage() throws Exception, NoSuchLocatorException {
-        hotline.loginPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
         hotline.mainPage.clickMainLogo();
         assertTrue(hotline.web.isElementPresent("LogoMainPage"), "Not switch to main page");
@@ -23,7 +23,7 @@ public class TestLoginForm extends Fixture{
 
     @Test
     public void loginFormEmpty() throws Exception, NoSuchLocatorException {
-        hotline.loginPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
         hotline.loginPage.clickLoginButton();
         assertTrue(hotline.web.isElementPresent("LoginErrorsMessages"), "All fields don't empty ");
@@ -32,7 +32,7 @@ public class TestLoginForm extends Fixture{
     @Test
     @Parameters("telishuk@mail.ru")
     public void fillCustomerLogin(String email) throws Exception, NoSuchLocatorException {
-        hotline.loginPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
         hotline.loginPage.fillDataClickEnter(email);
         assertTrue(hotline.web.isElementPresent("EmptyFieldError"), "Field password is don't empty ");
@@ -41,7 +41,7 @@ public class TestLoginForm extends Fixture{
     @Test
     @Parameters("telishuk@mail.ru")
     public void fillCustomerPassword(String email) throws Exception, NoSuchLocatorException {
-        hotline.loginPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
         hotline.loginPage.clearAllField();
         hotline.loginPage.fillLoginForm(email, randomData.getRandomString());
@@ -52,7 +52,7 @@ public class TestLoginForm extends Fixture{
     @Test
     @Parameters({"telishuk@mail.ru", "gfhjkm100"})
     public void loginCustomer(String email, String password) throws Exception, NoSuchLocatorException{
-        hotline.loginPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
         hotline.loginPage.clearAllField();
         hotline.loginPage.fillLoginForm(email, password);
@@ -63,7 +63,7 @@ public class TestLoginForm extends Fixture{
     @Test
     @Parameters({"telishuk@mail.ru", "gfhjkm100"})
     public void logoutCustomer(String email, String password) throws Exception, NoSuchLocatorException {
-        hotline.loginPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
         hotline.loginPage.clearAllField();
         hotline.loginPage.fillLoginForm(email, password);
@@ -76,7 +76,7 @@ public class TestLoginForm extends Fixture{
 
     @Test
     public void testRegistrationLink() throws Exception, NoSuchLocatorException {
-        hotline.loginPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
         hotline.loginPage.clickRegisterLink();
         assertTrue(hotline.web.isElementPresent("RegistrationForm"), "Registration form is not displayed");
@@ -84,7 +84,7 @@ public class TestLoginForm extends Fixture{
 
     @Test
     public void testForgotPasswordLink() throws Exception, NoSuchLocatorException {
-        hotline.loginPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
         hotline.loginPage.clickForgotLink();
         assertTrue(hotline.web.isElementPresent("ForgotPasswordForm"), "I remember the password");
@@ -93,7 +93,7 @@ public class TestLoginForm extends Fixture{
     @Test
     //@Ignore
     public void testTermOfUseLink() throws Exception, NoSuchLocatorException {
-        hotline.loginPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
         hotline.loginPage.clickTermOfUseLink();
         //Why don't work???

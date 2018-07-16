@@ -7,11 +7,11 @@ import java.io.IOException;
 
 public class LoginPage extends Page{
 
-    private static final String MAIN_URL = PropertyLoader.loadProperty("site.mainUrl");
+
     private static final Logger log = Logger.getLogger(ClassNameUtil.getCurrentClassName());
 
     public LoginPage(WebDriverWrapper driver) {
-        super(driver, MAIN_URL);
+        super(driver);
 
     }
 

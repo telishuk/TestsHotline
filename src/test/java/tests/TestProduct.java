@@ -11,7 +11,7 @@ public class TestProduct extends Fixture{
     @Test
     @Parameters({"telishuk@mail.ru", "gfhjkm100"})
     public void loginCustomer(String email, String password) throws Exception, NoSuchLocatorException{
-        hotline.productPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.clickAgreeLocation();
         hotline.mainPage.clickLoginButton();
         hotline.loginPage.clearAllField();
@@ -22,7 +22,7 @@ public class TestProduct extends Fixture{
 
     @Test
     public void checkBasketIsEmpty() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
-        hotline.productPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.checkBasket();
         assertTrue(hotline.web.isElementPresent("BasketEmpty"), "In the basket there is a product");
         hotline.mainPage.closeBasket();
@@ -30,7 +30,7 @@ public class TestProduct extends Fixture{
 
     @Test
     public void checkFilterPhone() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
-        hotline.productPage.openPage();
+        hotline.mainPage.openPage();
         hotline.productPage.openProductMobile();
         hotline.productPage.closeStageBorder();
         hotline.productPage.selectManufacturer();
@@ -40,7 +40,7 @@ public class TestProduct extends Fixture{
 
     @Test
     public void selectProductAuto() throws Exception, NoSuchLocatorException {
-        hotline.productPage.openPage();
+        hotline.mainPage.openPage();
         hotline.productPage.openProductAuto();
         hotline.productPage.selectProductAuto();
         hotline.productPage.clickImgProductAuto();
@@ -48,7 +48,7 @@ public class TestProduct extends Fixture{
 
     @Test
     public void addProductToBasket() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
-        hotline.productPage.openPage();
+        hotline.mainPage.openPage();
         hotline.productPage.openProductMobile();
         hotline.productPage.clickImgProductMobile();
         hotline.productPage.clickBuyProduct();
@@ -57,7 +57,7 @@ public class TestProduct extends Fixture{
 
     @Test(enabled = false)
     public void checkCorrectPrice() throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
-        hotline.productPage.openPage();
+        hotline.mainPage.openPage();
         hotline.mainPage.checkBasket();
         hotline.mainPage.goToTheBasket();
     }

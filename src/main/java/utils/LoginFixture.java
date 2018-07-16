@@ -1,7 +1,9 @@
 package utils;
 
 import org.apache.log4j.Logger;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.IOException;
@@ -9,7 +11,7 @@ import java.io.IOException;
 public class LoginFixture extends Fixture{
     private static final Logger log = Logger.getLogger(ClassNameUtil.getCurrentClassName());
 
-    @BeforeSuite
+    @BeforeClass
     public static void login() throws NoSuchLocatorException, InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException {
         log.info("Login");
         hotline.mainPage.clickLoginButton();
@@ -18,7 +20,7 @@ public class LoginFixture extends Fixture{
         hotline.loginPage.clickLoginButton();
     }
 
-    @AfterSuite
+    @AfterClass
     public static void logout() throws NoSuchLocatorException, InstantiationException, IllegalAccessException, CloneNotSupportedException, IOException {
         log.info("Logout");
         hotline.mainPage.clickLogoutButton();

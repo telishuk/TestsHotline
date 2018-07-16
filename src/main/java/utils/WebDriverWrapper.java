@@ -17,13 +17,13 @@ public class WebDriverWrapper implements WebDriver, TakesScreenshot{
     public static WebDriver driver;
 
 
-    public WebDriverWrapper(WebDriver dr) {
-        this.driver = dr;
+    public WebDriverWrapper(WebDriver driver) {
+        this.driver = driver;
     }
 
 
     public WebDriver getOriginalDriver(){
-        return this.driver;
+        return driver;
     }
 
 
