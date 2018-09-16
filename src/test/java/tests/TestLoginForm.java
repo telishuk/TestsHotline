@@ -30,7 +30,7 @@ public class TestLoginForm extends Fixture{
     }
 
     @Test
-    @Parameters("telishuk@mail.ru")
+    @Parameters("*******@mail.ru")
     public void fillCustomerLogin(String email) throws Exception, NoSuchLocatorException {
         hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
@@ -39,7 +39,7 @@ public class TestLoginForm extends Fixture{
     }
 
     @Test
-    @Parameters("telishuk@mail.ru")
+    @Parameters("*******@mail.ru")
     public void fillCustomerPassword(String email) throws Exception, NoSuchLocatorException {
         hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
@@ -50,7 +50,7 @@ public class TestLoginForm extends Fixture{
     }
 
     @Test
-    @Parameters({"telishuk@mail.ru", "gfhjkm100"})
+    @Parameters({"*******@mail.ru", "*******"})
     public void loginCustomer(String email, String password) throws Exception, NoSuchLocatorException{
         hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
@@ -61,7 +61,7 @@ public class TestLoginForm extends Fixture{
     }
 
     @Test
-    @Parameters({"telishuk@mail.ru", "gfhjkm100"})
+    @Parameters({"*******@mail.ru", "*******"})
     public void logoutCustomer(String email, String password) throws Exception, NoSuchLocatorException {
         hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();

@@ -22,7 +22,7 @@ public class TestRegistrationForm extends Fixture{
     @Test
     public void inputUserRegistrationEmail() throws Exception, NoSuchLocatorException {
         hotline.registrationPage.openPage();
-        hotline.registrationPage.fillRegisterEmail("telishuk.t@gmail.com");
+        hotline.registrationPage.fillRegisterEmail("*******@gmail.com");
         hotline.registrationPage.clickRegisterButton();
         assertTrue(hotline.web.isElementPresent("RegistrationErrorsMassage"), "Button was not click");
     }

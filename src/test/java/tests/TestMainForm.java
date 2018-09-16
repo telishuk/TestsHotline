@@ -41,7 +41,7 @@ public class TestMainForm extends Fixture {
     }
 
     @Test(groups = "positive")
-    @Parameters({"telishuk@mail.ru", "gfhjkm100"})
+    @Parameters({"*******@mail.ru", "*******"})
     public void fillCustomerData(String email, String password) throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
         hotline.mainPage.openPage();
         hotline.mainPage.clickCloseLocationMenu();
@@ -52,7 +52,7 @@ public class TestMainForm extends Fixture {
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         hotline.mainPage.clickCustomerDataForm();
-        hotline.mainPage.fillCustomerData("Taras", "Telischuk");
+        hotline.mainPage.fillCustomerData("*******", "*******");
         hotline. mainPage.clickRadioButtonMale();
         hotline.mainPage.clickButtonSaveChanges();
         Assert.assertEquals(hotline.web.getValueOfElement("CustomerFirstNameField"), "Taras", "Data was NOT added!");
@@ -62,7 +62,7 @@ public class TestMainForm extends Fixture {
 
 
     @Test
-    @Parameters({"telishuk@mail.ru", "gfhjkm100"})
+    @Parameters({"*******@mail.ru", "*******"})
     public void fillCustomerBirthday(String email, String password) throws IllegalAccessException, InstantiationException, NoSuchLocatorException, CloneNotSupportedException, IOException {
         hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
@@ -72,7 +72,7 @@ public class TestMainForm extends Fixture {
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         hotline.mainPage.clickCustomerDataForm();
-        hotline.mainPage.fillCustomerBirthDay("3", "5", "1988");
+        hotline.mainPage.fillCustomerBirthDay("*******", "*******", "*******");
         hotline.mainPage.clickButtonSaveChanges();
         hotline.mainPage.clickMainLogo();
         hotline.mainPage.clickLogoutButton();
@@ -84,7 +84,7 @@ public class TestMainForm extends Fixture {
         hotline.mainPage.openPage();
         hotline.mainPage.clickLoginButton();
         hotline.loginPage.clearAllField();
-        hotline.loginPage.fillLoginForm("telishuk@mail.ru", "gfhjkm100");
+        hotline.loginPage.fillLoginForm("*******@mail.ru", "*******");
         hotline.loginPage.clickLoginButton();
 
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);

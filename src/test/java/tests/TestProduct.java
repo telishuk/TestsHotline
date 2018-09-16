@@ -9,7 +9,7 @@ import static org.testng.Assert.assertTrue;
 public class TestProduct extends Fixture{
 
     @Test
-    @Parameters({"telishuk@mail.ru", "gfhjkm100"})
+    @Parameters({"*******@mail.ru", "*******"})
     public void loginCustomer(String email, String password) throws Exception, NoSuchLocatorException{
         hotline.mainPage.openPage();
         hotline.mainPage.clickAgreeLocation();
